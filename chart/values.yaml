@@ -1,13 +1,16 @@
 namespace: ecuaalejo2013-dev
 name: cmtx-mongo
 image: bitnami/mongodb:7.0
-storage: 1Gi
 port: 27017
 secretName: cmtx-mongo-credentials
 credentials:
   username: cmtx_user
   password: cmtx_pass_123
   database: cmtxdb
+persistence:
+  enabled: false      # usa PVC sólo cuando el cluster tenga storage disponible
+  size: 1Gi
+  storageClass: gp3
 resources:
   requests:
     cpu: 50m

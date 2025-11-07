@@ -29,8 +29,20 @@ spec:
           runAsNonRoot: true
           runAsUser: 1001
         resources: {{- toYaml .Values.resources | nindent 10 }}
+{{- if not .Values.persistence.enabled }}
+      volumes:
+      - name: data
+        emptyDir: {}
+{{- end }}
+{{- if .Values.persistence.enabled }}
   volumeClaimTemplates:
   - metadata: { name: data }
     spec:
       accessModes: [ "ReadWriteOnce" ]
-      resources: { requests: { storage: {{ .Values.storage }} } }
+{{- if .Values.persistence.storageClass }}
+      storageClassName: {{ .Values.persistence.storageClass }}
+{{- end }}
+      resources:
+        requests:
+          storage: {{ .Values.persistence.size }}
+{{- end }}
