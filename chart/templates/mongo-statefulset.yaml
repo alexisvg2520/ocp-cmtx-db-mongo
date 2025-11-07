@@ -14,7 +14,6 @@ spec:
         app.kubernetes.io/name: {{ .Values.name }}
         app.kubernetes.io/part-of: cmtx
     spec:
-      securityContext: { fsGroup: 1001 }
       containers:
       - name: mongodb
         image: {{ .Values.image }}
@@ -27,7 +26,6 @@ spec:
         securityContext:
           allowPrivilegeEscalation: false
           runAsNonRoot: true
-          runAsUser: 1001
         resources: {{- toYaml .Values.resources | nindent 10 }}
 {{- if not .Values.persistence.enabled }}
       volumes:
