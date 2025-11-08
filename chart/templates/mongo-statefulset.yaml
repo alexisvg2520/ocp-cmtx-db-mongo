@@ -22,7 +22,7 @@ spec:
         - secretRef: { name: {{ .Values.secretName }} }
         volumeMounts:
         - name: data
-          mountPath: /bitnami/mongodb
+          mountPath: /var/lib/mongodb/data
         securityContext:
           allowPrivilegeEscalation: false
           runAsNonRoot: true
