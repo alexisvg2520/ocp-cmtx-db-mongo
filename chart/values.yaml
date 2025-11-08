@@ -1,6 +1,6 @@
 namespace: ecuaalejo2013-dev
 name: cmtx-mongo
-image: mongo:6
+image: registry.access.redhat.com/rhscl/mongodb-36-rhel7
 port: 27017
 secretName: cmtx-mongo-credentials
 credentials:
