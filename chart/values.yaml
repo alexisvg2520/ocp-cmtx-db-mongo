@@ -1,6 +1,6 @@
 namespace: ecuaalejo2013-dev
 name: cmtx-mongo
-image: bitnami/mongodb:7.0
+image: mongo:6
 port: 27017
 secretName: cmtx-mongo-credentials
 credentials:
